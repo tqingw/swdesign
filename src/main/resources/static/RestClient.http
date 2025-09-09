@@ -1,0 +1,33 @@
+GET http://localhost:8080/books
+
+###
+
+GET http://localhost:8080/chat
+
+###
+
+GET http://localhost:8080/chat?prompt=summarize the key ideas of Trump in 50 words. return the output in json.
+
+###
+
+DELETE http://localhost:8080/books/5
+
+###
+GET http://localhost:8080/books/5
+
+###
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+    "title": "I, Robot"
+}
+
+###
+PUT http://localhost:8080/books/5
+Content-Type: application/json
+
+{
+    "title": "Sapiens"
+}
+
