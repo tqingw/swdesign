@@ -72,11 +72,7 @@ public class BookController {
     @PutMapping("/books/{id}")
     public Book updateBook(@PathVariable Long id, @RequestBody Book newBookInfo){
         // your code here, pls change the "return null" statement accordingly
-        if (!newBookInfo.getId().equals(id)) {
-        throw new BookNotFoundException(id);
-        }
-    
-        return newBookInfo;
+        return bookService.updateBook(id, newBookInfo);
     }
 
     /**
@@ -88,18 +84,7 @@ public class BookController {
     @DeleteMapping("/books/{id}")
     public void deleteBook(@PathVariable Long id){
         // your code here
-        boolean isPresent = false;
-        for (int i = 0; i < bookService.listBooks().size(); i++) {
-            if (bookService.listBooks().get(i).getId().equals(id)) {
-                bookService.deleteBook(id);
-                isPresent = true;
-                break;
-            }
-        }
-
-        if (!isPresent) {
-            throw new BookNotFoundException(id);
-        }
+        bookService.deleteBook(id);
     }
 
     

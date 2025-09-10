@@ -63,6 +63,16 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Book deleteBook(Long id){
-        return null;
+        Iterator<Book> iterator = books.iterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            if (book.getId().equals(id)) {
+                iterator.remove();
+                return book;
+            }
+        }
+        
+        throw new BookNotFoundException(id);
+        
     }
 }
