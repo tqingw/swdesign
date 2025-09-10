@@ -31,20 +31,20 @@ public class SwDesignApplication {
         // the use of RestTemplate to consume the web service
         
         // // Use BookClient which makes use of Spring's RestTemplate to consume the web service
-        // BookClient client = ctx.getBean(BookClient.class);
+        BookClient client = ctx.getBean(BookClient.class);
 
         // // Our web service endpoint
-        // String URI = "http://localhost:8080/books";
+        String URI = "http://localhost:8080/books";
 
         // // Perform a GET request
-        // Book book = client.getBook(URI, 1L);
-        // log.info("[RestTemplate] GET book: " + book.getTitle());
+        Book book = client.getBook(URI, 1L);
+        log.info("[RestTemplate] GET book: " + book.getTitle());
 
         // // Perform a POST request to add a new book
-        // Book newBook = new Book();
-        // newBook.setTitle("Gone With The Wind");
-        // Book returnedBook = client.addBook(URI, newBook);
-        // log.info("[RestTemplate] POST book: " + returnedBook.getTitle());
+        Book newBook = new Book();
+        newBook.setTitle("Gone With The Wind");
+        Book returnedBook = client.addBook(URI, newBook);
+        log.info("[RestTemplate] POST book: " + returnedBook.getTitle());
 
     }
     
